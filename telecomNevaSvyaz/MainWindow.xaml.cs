@@ -60,6 +60,9 @@ namespace telecomNevaSvyaz
                 {
                     Employee emp = DBHelper.bm.Employee.FirstOrDefault(x => x.Nomer.Equals(numberTB.Text) && x.Password.Equals(passwordPB.Password));
                     MessageBox.Show($"Вы успешно авторизовались, {emp.Surname} {emp.Name} {emp.Patronymic}!\nВаша роль: {emp.Role.Role1}");
+                    timer.Stop();
+                    timerOutputTB.Text = "";
+                    countTime = 10;
                 }
                 
             }
