@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ecf3735c0f9f44349c6a6f20d52066cf" Name="Diagram1">
+        <EntityTypeShape EntityType="CRM16Model.AvailableModule" Width="1.5" PointX="8" PointY="10.5" />
+        <EntityTypeShape EntityType="CRM16Model.BuildingType" Width="1.5" PointX="1.5" PointY="38" />
+        <EntityTypeShape EntityType="CRM16Model.City" Width="1.5" PointX="1.5" PointY="40.75" />
+        <EntityTypeShape EntityType="CRM16Model.ConnectedServices" Width="1.5" PointX="3" PointY="4.75" />
+        <EntityTypeShape EntityType="CRM16Model.Contracts" Width="1.5" PointX="0.75" PointY="15.375" />
+        <EntityTypeShape EntityType="CRM16Model.ContractType" Width="1.5" PointX="1.5" PointY="19.5" />
+        <EntityTypeShape EntityType="CRM16Model.CRM" Width="1.5" PointX="6" PointY="3.75" />
+        <EntityTypeShape EntityType="CRM16Model.Employee" Width="1.5" PointX="8" PointY="13.5" />
+        <EntityTypeShape EntityType="CRM16Model.Equipment" Width="1.5" PointX="8" PointY="22.125" />
+        <EntityTypeShape EntityType="CRM16Model.EquipmentInstallation" Width="1.5" PointX="10.25" PointY="19" />
+        <EntityTypeShape EntityType="CRM16Model.EquipmentType" Width="1.5" PointX="5.75" PointY="22.625" />
+        <EntityTypeShape EntityType="CRM16Model.Event" Width="1.5" PointX="8" PointY="17.125" />
+        <EntityTypeShape EntityType="CRM16Model.Gender" Width="1.5" PointX="1.5" PointY="12.125" />
+        <EntityTypeShape EntityType="CRM16Model.KindsAndTypesService" Width="1.5" PointX="11" PointY="15.25" />
+        <EntityTypeShape EntityType="CRM16Model.Module" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CRM16Model.ProblemType" Width="1.5" PointX="3.75" PointY="16.625" />
+        <EntityTypeShape EntityType="CRM16Model.Rayon" Width="1.5" PointX="1.5" PointY="34.5" />
+        <EntityTypeShape EntityType="CRM16Model.ResidentialAddress" Width="1.5" PointX="1.5" PointY="30.625" />
+        <EntityTypeShape EntityType="CRM16Model.Role" Width="1.5" PointX="5.75" PointY="12.5" />
+        <EntityTypeShape EntityType="CRM16Model.Service" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="CRM16Model.ServiceStatus" Width="1.5" PointX="3.75" PointY="14.25" />
+        <EntityTypeShape EntityType="CRM16Model.ServiceType" Width="1.5" PointX="3.75" PointY="11.75" />
+        <EntityTypeShape EntityType="CRM16Model.Street" Width="1.5" PointX="1.5" PointY="43.125" />
+        <EntityTypeShape EntityType="CRM16Model.Subscriber" Width="1.5" PointX="1.5" PointY="22.375" />
+        <EntityTypeShape EntityType="CRM16Model.TerminationReason" Width="1.5" PointX="1.5" PointY="9.75" />
+        <EntityTypeShape EntityType="CRM16Model.TypeOfServices" Width="1.5" PointX="3.75" PointY="18.875" />
+        <AssociationConnector Association="CRM16Model.FK_AvailableModules_Modeles" />
+        <AssociationConnector Association="CRM16Model.FK_AvailableModules_Roles" />
+        <AssociationConnector Association="CRM16Model.FK_Raions_BuildingTypes" />
+        <AssociationConnector Association="CRM16Model.FK_ResidentialAddress_Citys" />
+        <AssociationConnector Association="CRM16Model.FK_ConnectedServices_Contracts" />
+        <AssociationConnector Association="CRM16Model.FK_ConnectedServices_Services" />
+        <AssociationConnector Association="CRM16Model.FK_Contracts_ReasonForTerminations" />
+        <AssociationConnector Association="CRM16Model.FK_Contracts_Subscribers" />
+        <AssociationConnector Association="CRM16Model.FK_Contracts_TypeContracts" />
+        <AssociationConnector Association="CRM16Model.FK_CRM_ProblemTypes" />
+        <AssociationConnector Association="CRM16Model.FK_CRM_Services" />
+        <AssociationConnector Association="CRM16Model.FK_CRM_ServiceStatus" />
+        <AssociationConnector Association="CRM16Model.FK_CRM_ServiceTypes" />
+        <AssociationConnector Association="CRM16Model.FK_CRM_Subscribers" />
+        <AssociationConnector Association="CRM16Model.FK_CRM_TypeOfServices" />
+        <AssociationConnector Association="CRM16Model.FK_Employees_Roles" />
+        <AssociationConnector Association="CRM16Model.FK_EquipmentInstallations_Employees" />
+        <AssociationConnector Association="CRM16Model.FK_EquipmentInstallations_Equipments" />
+        <AssociationConnector Association="CRM16Model.FK_Equipments_TypeEquioment" />
+        <AssociationConnector Association="CRM16Model.FK_EquipmentInstallations_Subscribers" />
+        <AssociationConnector Association="CRM16Model.FK_Events_Roles" />
+        <AssociationConnector Association="CRM16Model.FK_Subscribers_Gender" />
+        <AssociationConnector Association="CRM16Model.FK_KindsAndTypesService_ServiceTypes" />
+        <AssociationConnector Association="CRM16Model.FK_KindsAndTypesService_TypeOfServices" />
+        <AssociationConnector Association="CRM16Model.FK_ResidentialAddress_Raions" />
+        <AssociationConnector Association="CRM16Model.FK_ResidentialAddress_Streets" />
+        <AssociationConnector Association="CRM16Model.FK_Subscribers_ResidentialAddress" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

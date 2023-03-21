@@ -1,0 +1,82 @@
+﻿<Window x:Class="telecomNevaSvyaz.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:telecomNevaSvyaz"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Телеком Нева Связь" Grid.Column="0" FontSize="27" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <Image Grid.Column="1" Source="\Resources\logo.jpg" HorizontalAlignment="Right"/>
+
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.2*"/>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Номер" Grid.Row="0" Grid.Column="1" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+            <TextBox Grid.Row="0" Height="25" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Width="200" KeyDown="numberTB_KeyDown" Name="numberTB"/>
+
+            <TextBlock Text="Пароль" Grid.Row="1" Grid.Column="1" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+            <PasswordBox Grid.Row="1" Height="25" Grid.Column="2" Width="200" VerticalAlignment="Center" HorizontalAlignment="Left" IsEnabled="False" Name="passwordPB" KeyDown="passwordPB_KeyDown"/>
+
+            <TextBlock Text="Код" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18"/>
+
+            <StackPanel  Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal">
+                <TextBox Width="150" Height="25" Name="codeTB" IsEnabled="False" KeyDown="codeTB_KeyDown"/>
+                <Image Source="\Resources\refresh.png" Width="25" Margin="25 0 0 0" Name="refreshI" MouseDown="refreshI_MouseDown" IsEnabled="False"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Name="timerOutputTB" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="1" HorizontalAlignment="Left" Orientation="Horizontal">
+                    <Button Content="Отмена" Width="80" Height="30" FontSize="16" Name="cancelBTN" Click="cancelBTN_Click"/>
+                    <Button Content="Вход" Width="80" Height="30" FontSize="16" Margin="40 0 0 0" IsEnabled="False" Name="enterBTN" Click="enterBTN_Click"/>
+                </StackPanel>
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</Window>

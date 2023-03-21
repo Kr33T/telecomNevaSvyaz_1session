@@ -1,0 +1,1758 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище CRM16Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AvailableModule">
+          <Key>
+            <PropertyRef Name="AvailableModuleID" />
+          </Key>
+          <Property Name="AvailableModuleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModuleID" Type="int" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BuildingType">
+          <Key>
+            <PropertyRef Name="BuildingTypeID" />
+          </Key>
+          <Property Name="BuildingTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuildingType" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConnectedServices">
+          <Key>
+            <PropertyRef Name="ConnectedServiceID" />
+          </Key>
+          <Property Name="ConnectedServiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubscribersID" Type="int" Nullable="false" />
+          <Property Name="ServicesID" Type="int" Nullable="false" />
+          <Property Name="ConnectionDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Contracts">
+          <Key>
+            <PropertyRef Name="SubscribersID" />
+          </Key>
+          <Property Name="SubscribersID" Type="int" Nullable="false" />
+          <Property Name="ContractNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateOfCinclusion" Type="date" Nullable="false" />
+          <Property Name="TypeContractID" Type="int" Nullable="false" />
+          <Property Name="PersonalAccount" Type="int" Nullable="false" />
+          <Property Name="ReasonForTerminationID" Type="int" />
+          <Property Name="TermibationDate" Type="date" />
+        </EntityType>
+        <EntityType Name="ContractType">
+          <Key>
+            <PropertyRef Name="TypeContractID" />
+          </Key>
+          <Property Name="TypeContractID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeContract" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CRM">
+          <Key>
+            <PropertyRef Name="CRMID" />
+          </Key>
+          <Property Name="CRMID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumberCRM" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DateCreation" Type="date" Nullable="false" />
+          <Property Name="SubscriberID" Type="int" Nullable="false" />
+          <Property Name="ServicesID" Type="int" Nullable="false" />
+          <Property Name="TypeOfServiceID" Type="int" Nullable="false" />
+          <Property Name="ServiceTypeID" Type="int" Nullable="false" />
+          <Property Name="ServiceStatusID" Type="int" Nullable="false" />
+          <Property Name="ProblemTypeID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ClosingDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="Nomer" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Image" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="EquiomentID" />
+          </Key>
+          <Property Name="EquiomentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EquiomentName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TypeEquipmentID" Type="int" Nullable="false" />
+          <Property Name="InvertaryNumberOS" Type="nvarchar" MaxLength="50" />
+          <Property Name="MACAdress" Type="nvarchar" MaxLength="50" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EquipmentInstallation">
+          <Key>
+            <PropertyRef Name="InstallationEquipmentID" />
+          </Key>
+          <Property Name="InstallationEquipmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InstallationDate" Type="date" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="EquipmentID" Type="int" Nullable="false" />
+          <Property Name="SubscriberID" Type="int" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="400" />
+          <Property Name="Rental" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EquipmentType">
+          <Key>
+            <PropertyRef Name="TypeEquipmentID" />
+          </Key>
+          <Property Name="TypeEquipmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeEquipment" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EventDate" Type="datetime" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="GenderID" />
+          </Key>
+          <Property Name="GenderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KindsAndTypesService">
+          <Key>
+            <PropertyRef Name="KindsAndTypesServiceID" />
+          </Key>
+          <Property Name="KindsAndTypesServiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeOfServiceID" Type="int" Nullable="false" />
+          <Property Name="ServiceType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Name="ModuleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModuleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProblemType">
+          <Key>
+            <PropertyRef Name="ProblemTypeID" />
+          </Key>
+          <Property Name="ProblemTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProblemType" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rayon">
+          <Key>
+            <PropertyRef Name="RaionID" />
+          </Key>
+          <Property Name="RaionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RaionName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Square" Type="float" Nullable="false" />
+          <Property Name="Population" Type="int" Nullable="false" />
+          <Property Name="CountMetroStations" Type="int" Nullable="false" />
+          <Property Name="BuildingTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ResidentialAddress">
+          <Key>
+            <PropertyRef Name="ResidentialAddressID" />
+          </Key>
+          <Property Name="ResidentialAddressID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrefixCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RaionID" Type="int" Nullable="false" />
+          <Property Name="CityID" Type="int" Nullable="false" />
+          <Property Name="StreetID" Type="int" />
+          <Property Name="House" Type="int" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ServicesID" />
+          </Key>
+          <Property Name="ServicesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Services" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceStatus">
+          <Key>
+            <PropertyRef Name="ServiceStatusID" />
+          </Key>
+          <Property Name="ServiceStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceType">
+          <Key>
+            <PropertyRef Name="ServiceTypeID" />
+          </Key>
+          <Property Name="ServiceTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceType" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="StreetID" />
+          </Key>
+          <Property Name="StreetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Street" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subscriber">
+          <Key>
+            <PropertyRef Name="SubscriberID" />
+          </Key>
+          <Property Name="SubscriberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubscriberNomer" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GenderID" Type="int" Nullable="false" />
+          <Property Name="DateOfBirth" Type="date" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Place0fResidence" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ResidentialAddressID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Seria" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="Nomer" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="DivisionCode" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="IssuedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DateOfIssue" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TerminationReason">
+          <Key>
+            <PropertyRef Name="ReasonForTerminationID" />
+          </Key>
+          <Property Name="ReasonForTerminationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReasonForTermination" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeOfServices">
+          <Key>
+            <PropertyRef Name="TypeOfServiceID" />
+          </Key>
+          <Property Name="TypeOfServiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeOfService" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AvailableModules_Modeles">
+          <End Role="Module" Type="Self.Module" Multiplicity="1" />
+          <End Role="AvailableModule" Type="Self.AvailableModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="AvailableModule">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AvailableModules_Roles">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="AvailableModule" Type="Self.AvailableModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="AvailableModule">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConnectedServices_Contracts">
+          <End Role="Contracts" Type="Self.Contracts" Multiplicity="1" />
+          <End Role="ConnectedServices" Type="Self.ConnectedServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contracts">
+              <PropertyRef Name="SubscribersID" />
+            </Principal>
+            <Dependent Role="ConnectedServices">
+              <PropertyRef Name="SubscribersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConnectedServices_Services">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="ConnectedServices" Type="Self.ConnectedServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ServicesID" />
+            </Principal>
+            <Dependent Role="ConnectedServices">
+              <PropertyRef Name="ServicesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contracts_ReasonForTerminations">
+          <End Role="TerminationReason" Type="Self.TerminationReason" Multiplicity="0..1" />
+          <End Role="Contracts" Type="Self.Contracts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TerminationReason">
+              <PropertyRef Name="ReasonForTerminationID" />
+            </Principal>
+            <Dependent Role="Contracts">
+              <PropertyRef Name="ReasonForTerminationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contracts_Subscribers">
+          <End Role="Subscriber" Type="Self.Subscriber" Multiplicity="1" />
+          <End Role="Contracts" Type="Self.Contracts" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Subscriber">
+              <PropertyRef Name="SubscriberID" />
+            </Principal>
+            <Dependent Role="Contracts">
+              <PropertyRef Name="SubscribersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contracts_TypeContracts">
+          <End Role="ContractType" Type="Self.ContractType" Multiplicity="1" />
+          <End Role="Contracts" Type="Self.Contracts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContractType">
+              <PropertyRef Name="TypeContractID" />
+            </Principal>
+            <Dependent Role="Contracts">
+              <PropertyRef Name="TypeContractID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CRM_ProblemTypes">
+          <End Role="ProblemType" Type="Self.ProblemType" Multiplicity="1" />
+          <End Role="CRM" Type="Self.CRM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProblemType">
+              <PropertyRef Name="ProblemTypeID" />
+            </Principal>
+            <Dependent Role="CRM">
+              <PropertyRef Name="ProblemTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CRM_Services">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="CRM" Type="Self.CRM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ServicesID" />
+            </Principal>
+            <Dependent Role="CRM">
+              <PropertyRef Name="ServicesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CRM_ServiceStatus">
+          <End Role="ServiceStatus" Type="Self.ServiceStatus" Multiplicity="1" />
+          <End Role="CRM" Type="Self.CRM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceStatus">
+              <PropertyRef Name="ServiceStatusID" />
+            </Principal>
+            <Dependent Role="CRM">
+              <PropertyRef Name="ServiceStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CRM_ServiceTypes">
+          <End Role="ServiceType" Type="Self.ServiceType" Multiplicity="1" />
+          <End Role="CRM" Type="Self.CRM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceType">
+              <PropertyRef Name="ServiceTypeID" />
+            </Principal>
+            <Dependent Role="CRM">
+              <PropertyRef Name="ServiceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CRM_Subscribers">
+          <End Role="Subscriber" Type="Self.Subscriber" Multiplicity="1" />
+          <End Role="CRM" Type="Self.CRM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscriber">
+              <PropertyRef Name="SubscriberID" />
+            </Principal>
+            <Dependent Role="CRM">
+              <PropertyRef Name="SubscriberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CRM_TypeOfServices">
+          <End Role="TypeOfServices" Type="Self.TypeOfServices" Multiplicity="1" />
+          <End Role="CRM" Type="Self.CRM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfServices">
+              <PropertyRef Name="TypeOfServiceID" />
+            </Principal>
+            <Dependent Role="CRM">
+              <PropertyRef Name="TypeOfServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Roles">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentInstallations_Employees">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="EquipmentInstallation" Type="Self.EquipmentInstallation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="EquipmentInstallation">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentInstallations_Equipments">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
+          <End Role="EquipmentInstallation" Type="Self.EquipmentInstallation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="EquiomentID" />
+            </Principal>
+            <Dependent Role="EquipmentInstallation">
+              <PropertyRef Name="EquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentInstallations_Subscribers">
+          <End Role="Subscriber" Type="Self.Subscriber" Multiplicity="1" />
+          <End Role="EquipmentInstallation" Type="Self.EquipmentInstallation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscriber">
+              <PropertyRef Name="SubscriberID" />
+            </Principal>
+            <Dependent Role="EquipmentInstallation">
+              <PropertyRef Name="SubscriberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipments_TypeEquioment">
+          <End Role="EquipmentType" Type="Self.EquipmentType" Multiplicity="1" />
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentType">
+              <PropertyRef Name="TypeEquipmentID" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="TypeEquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_Roles">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KindsAndTypesService_ServiceTypes">
+          <End Role="ServiceType" Type="Self.ServiceType" Multiplicity="1" />
+          <End Role="KindsAndTypesService" Type="Self.KindsAndTypesService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceType">
+              <PropertyRef Name="ServiceTypeID" />
+            </Principal>
+            <Dependent Role="KindsAndTypesService">
+              <PropertyRef Name="ServiceType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KindsAndTypesService_TypeOfServices">
+          <End Role="TypeOfServices" Type="Self.TypeOfServices" Multiplicity="1" />
+          <End Role="KindsAndTypesService" Type="Self.KindsAndTypesService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfServices">
+              <PropertyRef Name="TypeOfServiceID" />
+            </Principal>
+            <Dependent Role="KindsAndTypesService">
+              <PropertyRef Name="TypeOfServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Raions_BuildingTypes">
+          <End Role="BuildingType" Type="Self.BuildingType" Multiplicity="1" />
+          <End Role="Rayon" Type="Self.Rayon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BuildingType">
+              <PropertyRef Name="BuildingTypeID" />
+            </Principal>
+            <Dependent Role="Rayon">
+              <PropertyRef Name="BuildingTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResidentialAddress_Citys">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="ResidentialAddress" Type="Self.ResidentialAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="ResidentialAddress">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResidentialAddress_Raions">
+          <End Role="Rayon" Type="Self.Rayon" Multiplicity="1" />
+          <End Role="ResidentialAddress" Type="Self.ResidentialAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rayon">
+              <PropertyRef Name="RaionID" />
+            </Principal>
+            <Dependent Role="ResidentialAddress">
+              <PropertyRef Name="RaionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResidentialAddress_Streets">
+          <End Role="Street" Type="Self.Street" Multiplicity="0..1" />
+          <End Role="ResidentialAddress" Type="Self.ResidentialAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Street">
+              <PropertyRef Name="StreetID" />
+            </Principal>
+            <Dependent Role="ResidentialAddress">
+              <PropertyRef Name="StreetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscribers_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Subscriber" Type="Self.Subscriber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="GenderID" />
+            </Principal>
+            <Dependent Role="Subscriber">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscribers_ResidentialAddress">
+          <End Role="ResidentialAddress" Type="Self.ResidentialAddress" Multiplicity="1" />
+          <End Role="Subscriber" Type="Self.Subscriber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResidentialAddress">
+              <PropertyRef Name="ResidentialAddressID" />
+            </Principal>
+            <Dependent Role="Subscriber">
+              <PropertyRef Name="ResidentialAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище CRM16ModelContainer">
+          <EntitySet Name="AvailableModule" EntityType="Self.AvailableModule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BuildingType" EntityType="Self.BuildingType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConnectedServices" EntityType="Self.ConnectedServices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contracts" EntityType="Self.Contracts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContractType" EntityType="Self.ContractType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CRM" EntityType="Self.CRM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipmentInstallation" EntityType="Self.EquipmentInstallation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipmentType" EntityType="Self.EquipmentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KindsAndTypesService" EntityType="Self.KindsAndTypesService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Module" EntityType="Self.Module" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProblemType" EntityType="Self.ProblemType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rayon" EntityType="Self.Rayon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResidentialAddress" EntityType="Self.ResidentialAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceStatus" EntityType="Self.ServiceStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceType" EntityType="Self.ServiceType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Street" EntityType="Self.Street" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subscriber" EntityType="Self.Subscriber" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TerminationReason" EntityType="Self.TerminationReason" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeOfServices" EntityType="Self.TypeOfServices" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AvailableModules_Modeles" Association="Self.FK_AvailableModules_Modeles">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="AvailableModule" EntitySet="AvailableModule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AvailableModules_Roles" Association="Self.FK_AvailableModules_Roles">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="AvailableModule" EntitySet="AvailableModule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConnectedServices_Contracts" Association="Self.FK_ConnectedServices_Contracts">
+            <End Role="Contracts" EntitySet="Contracts" />
+            <End Role="ConnectedServices" EntitySet="ConnectedServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConnectedServices_Services" Association="Self.FK_ConnectedServices_Services">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="ConnectedServices" EntitySet="ConnectedServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contracts_ReasonForTerminations" Association="Self.FK_Contracts_ReasonForTerminations">
+            <End Role="TerminationReason" EntitySet="TerminationReason" />
+            <End Role="Contracts" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contracts_Subscribers" Association="Self.FK_Contracts_Subscribers">
+            <End Role="Subscriber" EntitySet="Subscriber" />
+            <End Role="Contracts" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contracts_TypeContracts" Association="Self.FK_Contracts_TypeContracts">
+            <End Role="ContractType" EntitySet="ContractType" />
+            <End Role="Contracts" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CRM_ProblemTypes" Association="Self.FK_CRM_ProblemTypes">
+            <End Role="ProblemType" EntitySet="ProblemType" />
+            <End Role="CRM" EntitySet="CRM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CRM_Services" Association="Self.FK_CRM_Services">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="CRM" EntitySet="CRM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CRM_ServiceStatus" Association="Self.FK_CRM_ServiceStatus">
+            <End Role="ServiceStatus" EntitySet="ServiceStatus" />
+            <End Role="CRM" EntitySet="CRM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CRM_ServiceTypes" Association="Self.FK_CRM_ServiceTypes">
+            <End Role="ServiceType" EntitySet="ServiceType" />
+            <End Role="CRM" EntitySet="CRM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CRM_Subscribers" Association="Self.FK_CRM_Subscribers">
+            <End Role="Subscriber" EntitySet="Subscriber" />
+            <End Role="CRM" EntitySet="CRM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CRM_TypeOfServices" Association="Self.FK_CRM_TypeOfServices">
+            <End Role="TypeOfServices" EntitySet="TypeOfServices" />
+            <End Role="CRM" EntitySet="CRM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Roles" Association="Self.FK_Employees_Roles">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentInstallations_Employees" Association="Self.FK_EquipmentInstallations_Employees">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EquipmentInstallation" EntitySet="EquipmentInstallation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentInstallations_Equipments" Association="Self.FK_EquipmentInstallations_Equipments">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="EquipmentInstallation" EntitySet="EquipmentInstallation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentInstallations_Subscribers" Association="Self.FK_EquipmentInstallations_Subscribers">
+            <End Role="Subscriber" EntitySet="Subscriber" />
+            <End Role="EquipmentInstallation" EntitySet="EquipmentInstallation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipments_TypeEquioment" Association="Self.FK_Equipments_TypeEquioment">
+            <End Role="EquipmentType" EntitySet="EquipmentType" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_Roles" Association="Self.FK_Events_Roles">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KindsAndTypesService_ServiceTypes" Association="Self.FK_KindsAndTypesService_ServiceTypes">
+            <End Role="ServiceType" EntitySet="ServiceType" />
+            <End Role="KindsAndTypesService" EntitySet="KindsAndTypesService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KindsAndTypesService_TypeOfServices" Association="Self.FK_KindsAndTypesService_TypeOfServices">
+            <End Role="TypeOfServices" EntitySet="TypeOfServices" />
+            <End Role="KindsAndTypesService" EntitySet="KindsAndTypesService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Raions_BuildingTypes" Association="Self.FK_Raions_BuildingTypes">
+            <End Role="BuildingType" EntitySet="BuildingType" />
+            <End Role="Rayon" EntitySet="Rayon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResidentialAddress_Citys" Association="Self.FK_ResidentialAddress_Citys">
+            <End Role="City" EntitySet="City" />
+            <End Role="ResidentialAddress" EntitySet="ResidentialAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResidentialAddress_Raions" Association="Self.FK_ResidentialAddress_Raions">
+            <End Role="Rayon" EntitySet="Rayon" />
+            <End Role="ResidentialAddress" EntitySet="ResidentialAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResidentialAddress_Streets" Association="Self.FK_ResidentialAddress_Streets">
+            <End Role="Street" EntitySet="Street" />
+            <End Role="ResidentialAddress" EntitySet="ResidentialAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscribers_Gender" Association="Self.FK_Subscribers_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Subscriber" EntitySet="Subscriber" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscribers_ResidentialAddress" Association="Self.FK_Subscribers_ResidentialAddress">
+            <End Role="ResidentialAddress" EntitySet="ResidentialAddress" />
+            <End Role="Subscriber" EntitySet="Subscriber" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CRM16Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AvailableModule" EntityType="CRM16Model.AvailableModule" />
+          <EntitySet Name="BuildingType" EntityType="CRM16Model.BuildingType" />
+          <EntitySet Name="City" EntityType="CRM16Model.City" />
+          <EntitySet Name="ConnectedServices" EntityType="CRM16Model.ConnectedServices" />
+          <EntitySet Name="Contracts" EntityType="CRM16Model.Contracts" />
+          <EntitySet Name="ContractType" EntityType="CRM16Model.ContractType" />
+          <EntitySet Name="CRM" EntityType="CRM16Model.CRM" />
+          <EntitySet Name="Employee" EntityType="CRM16Model.Employee" />
+          <EntitySet Name="Equipment" EntityType="CRM16Model.Equipment" />
+          <EntitySet Name="EquipmentInstallation" EntityType="CRM16Model.EquipmentInstallation" />
+          <EntitySet Name="EquipmentType" EntityType="CRM16Model.EquipmentType" />
+          <EntitySet Name="Event" EntityType="CRM16Model.Event" />
+          <EntitySet Name="Gender" EntityType="CRM16Model.Gender" />
+          <EntitySet Name="KindsAndTypesService" EntityType="CRM16Model.KindsAndTypesService" />
+          <EntitySet Name="Module" EntityType="CRM16Model.Module" />
+          <EntitySet Name="ProblemType" EntityType="CRM16Model.ProblemType" />
+          <EntitySet Name="Rayon" EntityType="CRM16Model.Rayon" />
+          <EntitySet Name="ResidentialAddress" EntityType="CRM16Model.ResidentialAddress" />
+          <EntitySet Name="Role" EntityType="CRM16Model.Role" />
+          <EntitySet Name="Service" EntityType="CRM16Model.Service" />
+          <EntitySet Name="ServiceStatus" EntityType="CRM16Model.ServiceStatus" />
+          <EntitySet Name="ServiceType" EntityType="CRM16Model.ServiceType" />
+          <EntitySet Name="Street" EntityType="CRM16Model.Street" />
+          <EntitySet Name="Subscriber" EntityType="CRM16Model.Subscriber" />
+          <EntitySet Name="TerminationReason" EntityType="CRM16Model.TerminationReason" />
+          <EntitySet Name="TypeOfServices" EntityType="CRM16Model.TypeOfServices" />
+          <AssociationSet Name="FK_AvailableModules_Modeles" Association="CRM16Model.FK_AvailableModules_Modeles">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="AvailableModule" EntitySet="AvailableModule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AvailableModules_Roles" Association="CRM16Model.FK_AvailableModules_Roles">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="AvailableModule" EntitySet="AvailableModule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Raions_BuildingTypes" Association="CRM16Model.FK_Raions_BuildingTypes">
+            <End Role="BuildingType" EntitySet="BuildingType" />
+            <End Role="Rayon" EntitySet="Rayon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResidentialAddress_Citys" Association="CRM16Model.FK_ResidentialAddress_Citys">
+            <End Role="City" EntitySet="City" />
+            <End Role="ResidentialAddress" EntitySet="ResidentialAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConnectedServices_Contracts" Association="CRM16Model.FK_ConnectedServices_Contracts">
+            <End Role="Contracts" EntitySet="Contracts" />
+            <End Role="ConnectedServices" EntitySet="ConnectedServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConnectedServices_Services" Association="CRM16Model.FK_ConnectedServices_Services">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="ConnectedServices" EntitySet="ConnectedServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contracts_ReasonForTerminations" Association="CRM16Model.FK_Contracts_ReasonForTerminations">
+            <End Role="TerminationReason" EntitySet="TerminationReason" />
+            <End Role="Contracts" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contracts_Subscribers" Association="CRM16Model.FK_Contracts_Subscribers">
+            <End Role="Subscriber" EntitySet="Subscriber" />
+            <End Role="Contracts" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contracts_TypeContracts" Association="CRM16Model.FK_Contracts_TypeContracts">
+            <End Role="ContractType" EntitySet="ContractType" />
+            <End Role="Contracts" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CRM_ProblemTypes" Association="CRM16Model.FK_CRM_ProblemTypes">
+            <End Role="ProblemType" EntitySet="ProblemType" />
+            <End Role="CRM" EntitySet="CRM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CRM_Services" Association="CRM16Model.FK_CRM_Services">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="CRM" EntitySet="CRM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CRM_ServiceStatus" Association="CRM16Model.FK_CRM_ServiceStatus">
+            <End Role="ServiceStatus" EntitySet="ServiceStatus" />
+            <End Role="CRM" EntitySet="CRM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CRM_ServiceTypes" Association="CRM16Model.FK_CRM_ServiceTypes">
+            <End Role="ServiceType" EntitySet="ServiceType" />
+            <End Role="CRM" EntitySet="CRM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CRM_Subscribers" Association="CRM16Model.FK_CRM_Subscribers">
+            <End Role="Subscriber" EntitySet="Subscriber" />
+            <End Role="CRM" EntitySet="CRM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CRM_TypeOfServices" Association="CRM16Model.FK_CRM_TypeOfServices">
+            <End Role="TypeOfServices" EntitySet="TypeOfServices" />
+            <End Role="CRM" EntitySet="CRM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Roles" Association="CRM16Model.FK_Employees_Roles">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentInstallations_Employees" Association="CRM16Model.FK_EquipmentInstallations_Employees">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EquipmentInstallation" EntitySet="EquipmentInstallation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentInstallations_Equipments" Association="CRM16Model.FK_EquipmentInstallations_Equipments">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="EquipmentInstallation" EntitySet="EquipmentInstallation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipments_TypeEquioment" Association="CRM16Model.FK_Equipments_TypeEquioment">
+            <End Role="EquipmentType" EntitySet="EquipmentType" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentInstallations_Subscribers" Association="CRM16Model.FK_EquipmentInstallations_Subscribers">
+            <End Role="Subscriber" EntitySet="Subscriber" />
+            <End Role="EquipmentInstallation" EntitySet="EquipmentInstallation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_Roles" Association="CRM16Model.FK_Events_Roles">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscribers_Gender" Association="CRM16Model.FK_Subscribers_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Subscriber" EntitySet="Subscriber" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KindsAndTypesService_ServiceTypes" Association="CRM16Model.FK_KindsAndTypesService_ServiceTypes">
+            <End Role="ServiceType" EntitySet="ServiceType" />
+            <End Role="KindsAndTypesService" EntitySet="KindsAndTypesService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KindsAndTypesService_TypeOfServices" Association="CRM16Model.FK_KindsAndTypesService_TypeOfServices">
+            <End Role="TypeOfServices" EntitySet="TypeOfServices" />
+            <End Role="KindsAndTypesService" EntitySet="KindsAndTypesService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResidentialAddress_Raions" Association="CRM16Model.FK_ResidentialAddress_Raions">
+            <End Role="Rayon" EntitySet="Rayon" />
+            <End Role="ResidentialAddress" EntitySet="ResidentialAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResidentialAddress_Streets" Association="CRM16Model.FK_ResidentialAddress_Streets">
+            <End Role="Street" EntitySet="Street" />
+            <End Role="ResidentialAddress" EntitySet="ResidentialAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscribers_ResidentialAddress" Association="CRM16Model.FK_Subscribers_ResidentialAddress">
+            <End Role="ResidentialAddress" EntitySet="ResidentialAddress" />
+            <End Role="Subscriber" EntitySet="Subscriber" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AvailableModule">
+          <Key>
+            <PropertyRef Name="AvailableModuleID" />
+          </Key>
+          <Property Name="AvailableModuleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Module" Relationship="CRM16Model.FK_AvailableModules_Modeles" FromRole="AvailableModule" ToRole="Module" />
+          <NavigationProperty Name="Role" Relationship="CRM16Model.FK_AvailableModules_Roles" FromRole="AvailableModule" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="BuildingType">
+          <Key>
+            <PropertyRef Name="BuildingTypeID" />
+          </Key>
+          <Property Name="BuildingTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuildingType1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Rayon" Relationship="CRM16Model.FK_Raions_BuildingTypes" FromRole="BuildingType" ToRole="Rayon" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="City1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ResidentialAddress" Relationship="CRM16Model.FK_ResidentialAddress_Citys" FromRole="City" ToRole="ResidentialAddress" />
+        </EntityType>
+        <EntityType Name="ConnectedServices">
+          <Key>
+            <PropertyRef Name="ConnectedServiceID" />
+          </Key>
+          <Property Name="ConnectedServiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubscribersID" Type="Int32" Nullable="false" />
+          <Property Name="ServicesID" Type="Int32" Nullable="false" />
+          <Property Name="ConnectionDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Contracts" Relationship="CRM16Model.FK_ConnectedServices_Contracts" FromRole="ConnectedServices" ToRole="Contracts" />
+          <NavigationProperty Name="Service" Relationship="CRM16Model.FK_ConnectedServices_Services" FromRole="ConnectedServices" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="Contracts">
+          <Key>
+            <PropertyRef Name="SubscribersID" />
+          </Key>
+          <Property Name="SubscribersID" Type="Int32" Nullable="false" />
+          <Property Name="ContractNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfCinclusion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TypeContractID" Type="Int32" Nullable="false" />
+          <Property Name="PersonalAccount" Type="Int32" Nullable="false" />
+          <Property Name="ReasonForTerminationID" Type="Int32" />
+          <Property Name="TermibationDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ConnectedServices" Relationship="CRM16Model.FK_ConnectedServices_Contracts" FromRole="Contracts" ToRole="ConnectedServices" />
+          <NavigationProperty Name="TerminationReason" Relationship="CRM16Model.FK_Contracts_ReasonForTerminations" FromRole="Contracts" ToRole="TerminationReason" />
+          <NavigationProperty Name="Subscriber" Relationship="CRM16Model.FK_Contracts_Subscribers" FromRole="Contracts" ToRole="Subscriber" />
+          <NavigationProperty Name="ContractType" Relationship="CRM16Model.FK_Contracts_TypeContracts" FromRole="Contracts" ToRole="ContractType" />
+        </EntityType>
+        <EntityType Name="ContractType">
+          <Key>
+            <PropertyRef Name="TypeContractID" />
+          </Key>
+          <Property Name="TypeContractID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeContract" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Contracts" Relationship="CRM16Model.FK_Contracts_TypeContracts" FromRole="ContractType" ToRole="Contracts" />
+        </EntityType>
+        <EntityType Name="CRM">
+          <Key>
+            <PropertyRef Name="CRMID" />
+          </Key>
+          <Property Name="CRMID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumberCRM" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreation" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SubscriberID" Type="Int32" Nullable="false" />
+          <Property Name="ServicesID" Type="Int32" Nullable="false" />
+          <Property Name="TypeOfServiceID" Type="Int32" Nullable="false" />
+          <Property Name="ServiceTypeID" Type="Int32" Nullable="false" />
+          <Property Name="ServiceStatusID" Type="Int32" Nullable="false" />
+          <Property Name="ProblemTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClosingDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ProblemType" Relationship="CRM16Model.FK_CRM_ProblemTypes" FromRole="CRM" ToRole="ProblemType" />
+          <NavigationProperty Name="Service" Relationship="CRM16Model.FK_CRM_Services" FromRole="CRM" ToRole="Service" />
+          <NavigationProperty Name="ServiceStatus" Relationship="CRM16Model.FK_CRM_ServiceStatus" FromRole="CRM" ToRole="ServiceStatus" />
+          <NavigationProperty Name="ServiceType" Relationship="CRM16Model.FK_CRM_ServiceTypes" FromRole="CRM" ToRole="ServiceType" />
+          <NavigationProperty Name="Subscriber" Relationship="CRM16Model.FK_CRM_Subscribers" FromRole="CRM" ToRole="Subscriber" />
+          <NavigationProperty Name="TypeOfServices" Relationship="CRM16Model.FK_CRM_TypeOfServices" FromRole="CRM" ToRole="TypeOfServices" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="Nomer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Role" Relationship="CRM16Model.FK_Employees_Roles" FromRole="Employee" ToRole="Role" />
+          <NavigationProperty Name="EquipmentInstallation" Relationship="CRM16Model.FK_EquipmentInstallations_Employees" FromRole="Employee" ToRole="EquipmentInstallation" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="EquiomentID" />
+          </Key>
+          <Property Name="EquiomentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EquiomentName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TypeEquipmentID" Type="Int32" Nullable="false" />
+          <Property Name="InvertaryNumberOS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MACAdress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SerialNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EquipmentInstallation" Relationship="CRM16Model.FK_EquipmentInstallations_Equipments" FromRole="Equipment" ToRole="EquipmentInstallation" />
+          <NavigationProperty Name="EquipmentType" Relationship="CRM16Model.FK_Equipments_TypeEquioment" FromRole="Equipment" ToRole="EquipmentType" />
+        </EntityType>
+        <EntityType Name="EquipmentInstallation">
+          <Key>
+            <PropertyRef Name="InstallationEquipmentID" />
+          </Key>
+          <Property Name="InstallationEquipmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InstallationDate" Type="DateTime" Precision="0" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="EquipmentID" Type="Int32" Nullable="false" />
+          <Property Name="SubscriberID" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Rental" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="CRM16Model.FK_EquipmentInstallations_Employees" FromRole="EquipmentInstallation" ToRole="Employee" />
+          <NavigationProperty Name="Equipment" Relationship="CRM16Model.FK_EquipmentInstallations_Equipments" FromRole="EquipmentInstallation" ToRole="Equipment" />
+          <NavigationProperty Name="Subscriber" Relationship="CRM16Model.FK_EquipmentInstallations_Subscribers" FromRole="EquipmentInstallation" ToRole="Subscriber" />
+        </EntityType>
+        <EntityType Name="EquipmentType">
+          <Key>
+            <PropertyRef Name="TypeEquipmentID" />
+          </Key>
+          <Property Name="TypeEquipmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeEquipment" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Equipment" Relationship="CRM16Model.FK_Equipments_TypeEquioment" FromRole="EquipmentType" ToRole="Equipment" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EventDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="CRM16Model.FK_Events_Roles" FromRole="Event" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="GenderID" />
+          </Key>
+          <Property Name="GenderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gender1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Subscriber" Relationship="CRM16Model.FK_Subscribers_Gender" FromRole="Gender" ToRole="Subscriber" />
+        </EntityType>
+        <EntityType Name="KindsAndTypesService">
+          <Key>
+            <PropertyRef Name="KindsAndTypesServiceID" />
+          </Key>
+          <Property Name="KindsAndTypesServiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeOfServiceID" Type="Int32" Nullable="false" />
+          <Property Name="ServiceType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ServiceType1" Relationship="CRM16Model.FK_KindsAndTypesService_ServiceTypes" FromRole="KindsAndTypesService" ToRole="ServiceType" />
+          <NavigationProperty Name="TypeOfServices" Relationship="CRM16Model.FK_KindsAndTypesService_TypeOfServices" FromRole="KindsAndTypesService" ToRole="TypeOfServices" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Name="ModuleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModuleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AvailableModule" Relationship="CRM16Model.FK_AvailableModules_Modeles" FromRole="Module" ToRole="AvailableModule" />
+        </EntityType>
+        <EntityType Name="ProblemType">
+          <Key>
+            <PropertyRef Name="ProblemTypeID" />
+          </Key>
+          <Property Name="ProblemTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProblemType1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CRM" Relationship="CRM16Model.FK_CRM_ProblemTypes" FromRole="ProblemType" ToRole="CRM" />
+        </EntityType>
+        <EntityType Name="Rayon">
+          <Key>
+            <PropertyRef Name="RaionID" />
+          </Key>
+          <Property Name="RaionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RaionName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Square" Type="Double" Nullable="false" />
+          <Property Name="Population" Type="Int32" Nullable="false" />
+          <Property Name="CountMetroStations" Type="Int32" Nullable="false" />
+          <Property Name="BuildingTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BuildingType" Relationship="CRM16Model.FK_Raions_BuildingTypes" FromRole="Rayon" ToRole="BuildingType" />
+          <NavigationProperty Name="ResidentialAddress" Relationship="CRM16Model.FK_ResidentialAddress_Raions" FromRole="Rayon" ToRole="ResidentialAddress" />
+        </EntityType>
+        <EntityType Name="ResidentialAddress">
+          <Key>
+            <PropertyRef Name="ResidentialAddressID" />
+          </Key>
+          <Property Name="ResidentialAddressID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrefixCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RaionID" Type="Int32" Nullable="false" />
+          <Property Name="CityID" Type="Int32" Nullable="false" />
+          <Property Name="StreetID" Type="Int32" />
+          <Property Name="House" Type="Int32" />
+          <NavigationProperty Name="City" Relationship="CRM16Model.FK_ResidentialAddress_Citys" FromRole="ResidentialAddress" ToRole="City" />
+          <NavigationProperty Name="Rayon" Relationship="CRM16Model.FK_ResidentialAddress_Raions" FromRole="ResidentialAddress" ToRole="Rayon" />
+          <NavigationProperty Name="Street" Relationship="CRM16Model.FK_ResidentialAddress_Streets" FromRole="ResidentialAddress" ToRole="Street" />
+          <NavigationProperty Name="Subscriber" Relationship="CRM16Model.FK_Subscribers_ResidentialAddress" FromRole="ResidentialAddress" ToRole="Subscriber" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AvailableModule" Relationship="CRM16Model.FK_AvailableModules_Roles" FromRole="Role" ToRole="AvailableModule" />
+          <NavigationProperty Name="Employee" Relationship="CRM16Model.FK_Employees_Roles" FromRole="Role" ToRole="Employee" />
+          <NavigationProperty Name="Event" Relationship="CRM16Model.FK_Events_Roles" FromRole="Role" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ServicesID" />
+          </Key>
+          <Property Name="ServicesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Services" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ConnectedServices" Relationship="CRM16Model.FK_ConnectedServices_Services" FromRole="Service" ToRole="ConnectedServices" />
+          <NavigationProperty Name="CRM" Relationship="CRM16Model.FK_CRM_Services" FromRole="Service" ToRole="CRM" />
+        </EntityType>
+        <EntityType Name="ServiceStatus">
+          <Key>
+            <PropertyRef Name="ServiceStatusID" />
+          </Key>
+          <Property Name="ServiceStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceStatus1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CRM" Relationship="CRM16Model.FK_CRM_ServiceStatus" FromRole="ServiceStatus" ToRole="CRM" />
+        </EntityType>
+        <EntityType Name="ServiceType">
+          <Key>
+            <PropertyRef Name="ServiceTypeID" />
+          </Key>
+          <Property Name="ServiceTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceType1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CRM" Relationship="CRM16Model.FK_CRM_ServiceTypes" FromRole="ServiceType" ToRole="CRM" />
+          <NavigationProperty Name="KindsAndTypesService" Relationship="CRM16Model.FK_KindsAndTypesService_ServiceTypes" FromRole="ServiceType" ToRole="KindsAndTypesService" />
+        </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="StreetID" />
+          </Key>
+          <Property Name="StreetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Street1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ResidentialAddress" Relationship="CRM16Model.FK_ResidentialAddress_Streets" FromRole="Street" ToRole="ResidentialAddress" />
+        </EntityType>
+        <EntityType Name="Subscriber">
+          <Key>
+            <PropertyRef Name="SubscriberID" />
+          </Key>
+          <Property Name="SubscriberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubscriberNomer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GenderID" Type="Int32" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Place0fResidence" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ResidentialAddressID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Seria" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Nomer" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="DivisionCode" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="IssuedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfIssue" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Contracts" Relationship="CRM16Model.FK_Contracts_Subscribers" FromRole="Subscriber" ToRole="Contracts" />
+          <NavigationProperty Name="CRM" Relationship="CRM16Model.FK_CRM_Subscribers" FromRole="Subscriber" ToRole="CRM" />
+          <NavigationProperty Name="EquipmentInstallation" Relationship="CRM16Model.FK_EquipmentInstallations_Subscribers" FromRole="Subscriber" ToRole="EquipmentInstallation" />
+          <NavigationProperty Name="Gender" Relationship="CRM16Model.FK_Subscribers_Gender" FromRole="Subscriber" ToRole="Gender" />
+          <NavigationProperty Name="ResidentialAddress" Relationship="CRM16Model.FK_Subscribers_ResidentialAddress" FromRole="Subscriber" ToRole="ResidentialAddress" />
+        </EntityType>
+        <EntityType Name="TerminationReason">
+          <Key>
+            <PropertyRef Name="ReasonForTerminationID" />
+          </Key>
+          <Property Name="ReasonForTerminationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReasonForTermination" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contracts" Relationship="CRM16Model.FK_Contracts_ReasonForTerminations" FromRole="TerminationReason" ToRole="Contracts" />
+        </EntityType>
+        <EntityType Name="TypeOfServices">
+          <Key>
+            <PropertyRef Name="TypeOfServiceID" />
+          </Key>
+          <Property Name="TypeOfServiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeOfService" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CRM" Relationship="CRM16Model.FK_CRM_TypeOfServices" FromRole="TypeOfServices" ToRole="CRM" />
+          <NavigationProperty Name="KindsAndTypesService" Relationship="CRM16Model.FK_KindsAndTypesService_TypeOfServices" FromRole="TypeOfServices" ToRole="KindsAndTypesService" />
+        </EntityType>
+        <Association Name="FK_AvailableModules_Modeles">
+          <End Type="CRM16Model.Module" Role="Module" Multiplicity="1" />
+          <End Type="CRM16Model.AvailableModule" Role="AvailableModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="AvailableModule">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AvailableModules_Roles">
+          <End Type="CRM16Model.Role" Role="Role" Multiplicity="1" />
+          <End Type="CRM16Model.AvailableModule" Role="AvailableModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="AvailableModule">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Raions_BuildingTypes">
+          <End Type="CRM16Model.BuildingType" Role="BuildingType" Multiplicity="1" />
+          <End Type="CRM16Model.Rayon" Role="Rayon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BuildingType">
+              <PropertyRef Name="BuildingTypeID" />
+            </Principal>
+            <Dependent Role="Rayon">
+              <PropertyRef Name="BuildingTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResidentialAddress_Citys">
+          <End Type="CRM16Model.City" Role="City" Multiplicity="1" />
+          <End Type="CRM16Model.ResidentialAddress" Role="ResidentialAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="ResidentialAddress">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConnectedServices_Contracts">
+          <End Type="CRM16Model.Contracts" Role="Contracts" Multiplicity="1" />
+          <End Type="CRM16Model.ConnectedServices" Role="ConnectedServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contracts">
+              <PropertyRef Name="SubscribersID" />
+            </Principal>
+            <Dependent Role="ConnectedServices">
+              <PropertyRef Name="SubscribersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConnectedServices_Services">
+          <End Type="CRM16Model.Service" Role="Service" Multiplicity="1" />
+          <End Type="CRM16Model.ConnectedServices" Role="ConnectedServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ServicesID" />
+            </Principal>
+            <Dependent Role="ConnectedServices">
+              <PropertyRef Name="ServicesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contracts_ReasonForTerminations">
+          <End Type="CRM16Model.TerminationReason" Role="TerminationReason" Multiplicity="0..1" />
+          <End Type="CRM16Model.Contracts" Role="Contracts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TerminationReason">
+              <PropertyRef Name="ReasonForTerminationID" />
+            </Principal>
+            <Dependent Role="Contracts">
+              <PropertyRef Name="ReasonForTerminationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contracts_Subscribers">
+          <End Type="CRM16Model.Subscriber" Role="Subscriber" Multiplicity="1" />
+          <End Type="CRM16Model.Contracts" Role="Contracts" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Subscriber">
+              <PropertyRef Name="SubscriberID" />
+            </Principal>
+            <Dependent Role="Contracts">
+              <PropertyRef Name="SubscribersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contracts_TypeContracts">
+          <End Type="CRM16Model.ContractType" Role="ContractType" Multiplicity="1" />
+          <End Type="CRM16Model.Contracts" Role="Contracts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContractType">
+              <PropertyRef Name="TypeContractID" />
+            </Principal>
+            <Dependent Role="Contracts">
+              <PropertyRef Name="TypeContractID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CRM_ProblemTypes">
+          <End Type="CRM16Model.ProblemType" Role="ProblemType" Multiplicity="1" />
+          <End Type="CRM16Model.CRM" Role="CRM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProblemType">
+              <PropertyRef Name="ProblemTypeID" />
+            </Principal>
+            <Dependent Role="CRM">
+              <PropertyRef Name="ProblemTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CRM_Services">
+          <End Type="CRM16Model.Service" Role="Service" Multiplicity="1" />
+          <End Type="CRM16Model.CRM" Role="CRM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ServicesID" />
+            </Principal>
+            <Dependent Role="CRM">
+              <PropertyRef Name="ServicesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CRM_ServiceStatus">
+          <End Type="CRM16Model.ServiceStatus" Role="ServiceStatus" Multiplicity="1" />
+          <End Type="CRM16Model.CRM" Role="CRM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceStatus">
+              <PropertyRef Name="ServiceStatusID" />
+            </Principal>
+            <Dependent Role="CRM">
+              <PropertyRef Name="ServiceStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CRM_ServiceTypes">
+          <End Type="CRM16Model.ServiceType" Role="ServiceType" Multiplicity="1" />
+          <End Type="CRM16Model.CRM" Role="CRM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceType">
+              <PropertyRef Name="ServiceTypeID" />
+            </Principal>
+            <Dependent Role="CRM">
+              <PropertyRef Name="ServiceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CRM_Subscribers">
+          <End Type="CRM16Model.Subscriber" Role="Subscriber" Multiplicity="1" />
+          <End Type="CRM16Model.CRM" Role="CRM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscriber">
+              <PropertyRef Name="SubscriberID" />
+            </Principal>
+            <Dependent Role="CRM">
+              <PropertyRef Name="SubscriberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CRM_TypeOfServices">
+          <End Type="CRM16Model.TypeOfServices" Role="TypeOfServices" Multiplicity="1" />
+          <End Type="CRM16Model.CRM" Role="CRM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfServices">
+              <PropertyRef Name="TypeOfServiceID" />
+            </Principal>
+            <Dependent Role="CRM">
+              <PropertyRef Name="TypeOfServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Roles">
+          <End Type="CRM16Model.Role" Role="Role" Multiplicity="1" />
+          <End Type="CRM16Model.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentInstallations_Employees">
+          <End Type="CRM16Model.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="CRM16Model.EquipmentInstallation" Role="EquipmentInstallation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="EquipmentInstallation">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentInstallations_Equipments">
+          <End Type="CRM16Model.Equipment" Role="Equipment" Multiplicity="1" />
+          <End Type="CRM16Model.EquipmentInstallation" Role="EquipmentInstallation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="EquiomentID" />
+            </Principal>
+            <Dependent Role="EquipmentInstallation">
+              <PropertyRef Name="EquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipments_TypeEquioment">
+          <End Type="CRM16Model.EquipmentType" Role="EquipmentType" Multiplicity="1" />
+          <End Type="CRM16Model.Equipment" Role="Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentType">
+              <PropertyRef Name="TypeEquipmentID" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="TypeEquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentInstallations_Subscribers">
+          <End Type="CRM16Model.Subscriber" Role="Subscriber" Multiplicity="1" />
+          <End Type="CRM16Model.EquipmentInstallation" Role="EquipmentInstallation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscriber">
+              <PropertyRef Name="SubscriberID" />
+            </Principal>
+            <Dependent Role="EquipmentInstallation">
+              <PropertyRef Name="SubscriberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_Roles">
+          <End Type="CRM16Model.Role" Role="Role" Multiplicity="1" />
+          <End Type="CRM16Model.Event" Role="Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscribers_Gender">
+          <End Type="CRM16Model.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="CRM16Model.Subscriber" Role="Subscriber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="GenderID" />
+            </Principal>
+            <Dependent Role="Subscriber">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KindsAndTypesService_ServiceTypes">
+          <End Type="CRM16Model.ServiceType" Role="ServiceType" Multiplicity="1" />
+          <End Type="CRM16Model.KindsAndTypesService" Role="KindsAndTypesService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceType">
+              <PropertyRef Name="ServiceTypeID" />
+            </Principal>
+            <Dependent Role="KindsAndTypesService">
+              <PropertyRef Name="ServiceType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KindsAndTypesService_TypeOfServices">
+          <End Type="CRM16Model.TypeOfServices" Role="TypeOfServices" Multiplicity="1" />
+          <End Type="CRM16Model.KindsAndTypesService" Role="KindsAndTypesService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfServices">
+              <PropertyRef Name="TypeOfServiceID" />
+            </Principal>
+            <Dependent Role="KindsAndTypesService">
+              <PropertyRef Name="TypeOfServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResidentialAddress_Raions">
+          <End Type="CRM16Model.Rayon" Role="Rayon" Multiplicity="1" />
+          <End Type="CRM16Model.ResidentialAddress" Role="ResidentialAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rayon">
+              <PropertyRef Name="RaionID" />
+            </Principal>
+            <Dependent Role="ResidentialAddress">
+              <PropertyRef Name="RaionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResidentialAddress_Streets">
+          <End Type="CRM16Model.Street" Role="Street" Multiplicity="0..1" />
+          <End Type="CRM16Model.ResidentialAddress" Role="ResidentialAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Street">
+              <PropertyRef Name="StreetID" />
+            </Principal>
+            <Dependent Role="ResidentialAddress">
+              <PropertyRef Name="StreetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscribers_ResidentialAddress">
+          <End Type="CRM16Model.ResidentialAddress" Role="ResidentialAddress" Multiplicity="1" />
+          <End Type="CRM16Model.Subscriber" Role="Subscriber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResidentialAddress">
+              <PropertyRef Name="ResidentialAddressID" />
+            </Principal>
+            <Dependent Role="Subscriber">
+              <PropertyRef Name="ResidentialAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище CRM16ModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="AvailableModule">
+            <EntityTypeMapping TypeName="CRM16Model.AvailableModule">
+              <MappingFragment StoreEntitySet="AvailableModule">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="AvailableModuleID" ColumnName="AvailableModuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BuildingType">
+            <EntityTypeMapping TypeName="CRM16Model.BuildingType">
+              <MappingFragment StoreEntitySet="BuildingType">
+                <ScalarProperty Name="BuildingType1" ColumnName="BuildingType" />
+                <ScalarProperty Name="BuildingTypeID" ColumnName="BuildingTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="CRM16Model.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="City1" ColumnName="City" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConnectedServices">
+            <EntityTypeMapping TypeName="CRM16Model.ConnectedServices">
+              <MappingFragment StoreEntitySet="ConnectedServices">
+                <ScalarProperty Name="ConnectionDate" ColumnName="ConnectionDate" />
+                <ScalarProperty Name="ServicesID" ColumnName="ServicesID" />
+                <ScalarProperty Name="SubscribersID" ColumnName="SubscribersID" />
+                <ScalarProperty Name="ConnectedServiceID" ColumnName="ConnectedServiceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contracts">
+            <EntityTypeMapping TypeName="CRM16Model.Contracts">
+              <MappingFragment StoreEntitySet="Contracts">
+                <ScalarProperty Name="TermibationDate" ColumnName="TermibationDate" />
+                <ScalarProperty Name="ReasonForTerminationID" ColumnName="ReasonForTerminationID" />
+                <ScalarProperty Name="PersonalAccount" ColumnName="PersonalAccount" />
+                <ScalarProperty Name="TypeContractID" ColumnName="TypeContractID" />
+                <ScalarProperty Name="DateOfCinclusion" ColumnName="DateOfCinclusion" />
+                <ScalarProperty Name="ContractNumber" ColumnName="ContractNumber" />
+                <ScalarProperty Name="SubscribersID" ColumnName="SubscribersID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContractType">
+            <EntityTypeMapping TypeName="CRM16Model.ContractType">
+              <MappingFragment StoreEntitySet="ContractType">
+                <ScalarProperty Name="TypeContract" ColumnName="TypeContract" />
+                <ScalarProperty Name="TypeContractID" ColumnName="TypeContractID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CRM">
+            <EntityTypeMapping TypeName="CRM16Model.CRM">
+              <MappingFragment StoreEntitySet="CRM">
+                <ScalarProperty Name="ClosingDate" ColumnName="ClosingDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ProblemTypeID" ColumnName="ProblemTypeID" />
+                <ScalarProperty Name="ServiceStatusID" ColumnName="ServiceStatusID" />
+                <ScalarProperty Name="ServiceTypeID" ColumnName="ServiceTypeID" />
+                <ScalarProperty Name="TypeOfServiceID" ColumnName="TypeOfServiceID" />
+                <ScalarProperty Name="ServicesID" ColumnName="ServicesID" />
+                <ScalarProperty Name="SubscriberID" ColumnName="SubscriberID" />
+                <ScalarProperty Name="DateCreation" ColumnName="DateCreation" />
+                <ScalarProperty Name="NumberCRM" ColumnName="NumberCRM" />
+                <ScalarProperty Name="CRMID" ColumnName="CRMID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="CRM16Model.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Nomer" ColumnName="Nomer" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipment">
+            <EntityTypeMapping TypeName="CRM16Model.Equipment">
+              <MappingFragment StoreEntitySet="Equipment">
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="MACAdress" ColumnName="MACAdress" />
+                <ScalarProperty Name="InvertaryNumberOS" ColumnName="InvertaryNumberOS" />
+                <ScalarProperty Name="TypeEquipmentID" ColumnName="TypeEquipmentID" />
+                <ScalarProperty Name="EquiomentName" ColumnName="EquiomentName" />
+                <ScalarProperty Name="EquiomentID" ColumnName="EquiomentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquipmentInstallation">
+            <EntityTypeMapping TypeName="CRM16Model.EquipmentInstallation">
+              <MappingFragment StoreEntitySet="EquipmentInstallation">
+                <ScalarProperty Name="Rental" ColumnName="Rental" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="SubscriberID" ColumnName="SubscriberID" />
+                <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="InstallationDate" ColumnName="InstallationDate" />
+                <ScalarProperty Name="InstallationEquipmentID" ColumnName="InstallationEquipmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquipmentType">
+            <EntityTypeMapping TypeName="CRM16Model.EquipmentType">
+              <MappingFragment StoreEntitySet="EquipmentType">
+                <ScalarProperty Name="TypeEquipment" ColumnName="TypeEquipment" />
+                <ScalarProperty Name="TypeEquipmentID" ColumnName="TypeEquipmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Event">
+            <EntityTypeMapping TypeName="CRM16Model.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="CRM16Model.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Gender1" ColumnName="Gender" />
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KindsAndTypesService">
+            <EntityTypeMapping TypeName="CRM16Model.KindsAndTypesService">
+              <MappingFragment StoreEntitySet="KindsAndTypesService">
+                <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
+                <ScalarProperty Name="TypeOfServiceID" ColumnName="TypeOfServiceID" />
+                <ScalarProperty Name="KindsAndTypesServiceID" ColumnName="KindsAndTypesServiceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Module">
+            <EntityTypeMapping TypeName="CRM16Model.Module">
+              <MappingFragment StoreEntitySet="Module">
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProblemType">
+            <EntityTypeMapping TypeName="CRM16Model.ProblemType">
+              <MappingFragment StoreEntitySet="ProblemType">
+                <ScalarProperty Name="ProblemType1" ColumnName="ProblemType" />
+                <ScalarProperty Name="ProblemTypeID" ColumnName="ProblemTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rayon">
+            <EntityTypeMapping TypeName="CRM16Model.Rayon">
+              <MappingFragment StoreEntitySet="Rayon">
+                <ScalarProperty Name="BuildingTypeID" ColumnName="BuildingTypeID" />
+                <ScalarProperty Name="CountMetroStations" ColumnName="CountMetroStations" />
+                <ScalarProperty Name="Population" ColumnName="Population" />
+                <ScalarProperty Name="Square" ColumnName="Square" />
+                <ScalarProperty Name="RaionName" ColumnName="RaionName" />
+                <ScalarProperty Name="RaionID" ColumnName="RaionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResidentialAddress">
+            <EntityTypeMapping TypeName="CRM16Model.ResidentialAddress">
+              <MappingFragment StoreEntitySet="ResidentialAddress">
+                <ScalarProperty Name="House" ColumnName="House" />
+                <ScalarProperty Name="StreetID" ColumnName="StreetID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="RaionID" ColumnName="RaionID" />
+                <ScalarProperty Name="PrefixCode" ColumnName="PrefixCode" />
+                <ScalarProperty Name="ResidentialAddressID" ColumnName="ResidentialAddressID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="CRM16Model.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Role1" ColumnName="Role" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Service">
+            <EntityTypeMapping TypeName="CRM16Model.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="Services" ColumnName="Services" />
+                <ScalarProperty Name="ServicesID" ColumnName="ServicesID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceStatus">
+            <EntityTypeMapping TypeName="CRM16Model.ServiceStatus">
+              <MappingFragment StoreEntitySet="ServiceStatus">
+                <ScalarProperty Name="ServiceStatus1" ColumnName="ServiceStatus" />
+                <ScalarProperty Name="ServiceStatusID" ColumnName="ServiceStatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceType">
+            <EntityTypeMapping TypeName="CRM16Model.ServiceType">
+              <MappingFragment StoreEntitySet="ServiceType">
+                <ScalarProperty Name="ServiceType1" ColumnName="ServiceType" />
+                <ScalarProperty Name="ServiceTypeID" ColumnName="ServiceTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Street">
+            <EntityTypeMapping TypeName="CRM16Model.Street">
+              <MappingFragment StoreEntitySet="Street">
+                <ScalarProperty Name="Street1" ColumnName="Street" />
+                <ScalarProperty Name="StreetID" ColumnName="StreetID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subscriber">
+            <EntityTypeMapping TypeName="CRM16Model.Subscriber">
+              <MappingFragment StoreEntitySet="Subscriber">
+                <ScalarProperty Name="DateOfIssue" ColumnName="DateOfIssue" />
+                <ScalarProperty Name="IssuedBy" ColumnName="IssuedBy" />
+                <ScalarProperty Name="DivisionCode" ColumnName="DivisionCode" />
+                <ScalarProperty Name="Nomer" ColumnName="Nomer" />
+                <ScalarProperty Name="Seria" ColumnName="Seria" />
+                <ScalarProperty Name="ResidentialAddressID" ColumnName="ResidentialAddressID" />
+                <ScalarProperty Name="Place0fResidence" ColumnName="Place0fResidence" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="SubscriberNomer" ColumnName="SubscriberNomer" />
+                <ScalarProperty Name="SubscriberID" ColumnName="SubscriberID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TerminationReason">
+            <EntityTypeMapping TypeName="CRM16Model.TerminationReason">
+              <MappingFragment StoreEntitySet="TerminationReason">
+                <ScalarProperty Name="ReasonForTermination" ColumnName="ReasonForTermination" />
+                <ScalarProperty Name="ReasonForTerminationID" ColumnName="ReasonForTerminationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeOfServices">
+            <EntityTypeMapping TypeName="CRM16Model.TypeOfServices">
+              <MappingFragment StoreEntitySet="TypeOfServices">
+                <ScalarProperty Name="TypeOfService" ColumnName="TypeOfService" />
+                <ScalarProperty Name="TypeOfServiceID" ColumnName="TypeOfServiceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
